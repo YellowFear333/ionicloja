@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Página do Produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="produto$ | async as produto">
+  <ion-item>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let c of produto.foto">
+        <img src="{{ c }}" alt="" />
+      </ion-slide>
+    </ion-slides>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nome: </ion-label>
+    <ion-text> {{ produto.nome }} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descrição: </ion-label>
+    <ion-text> {{ produto.descricao }} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Quantidade: </ion-label>
+    <ion-text> {{ produto.quant }} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Valor: </ion-label>
+    <ion-text> {{ produto.valor }} </ion-text>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-button color="tertiary" shape="round" slot="end" [routerLink]="[ '/edit', id ]">
+      <ion-icon name="create"></ion-icon>
+    </ion-button>
+    <ion-button color="tertiary" shape="round">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-content>
